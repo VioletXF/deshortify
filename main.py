@@ -28,7 +28,8 @@ if __name__ == "__main__":
         f.write(f"file '{input_file}'\n")
         f.write(f"file '{black_video}'\n")
     
-    # concatenate the input video and the black screen video with audio
+    # concatenate the input video and the black screen video
+    # 'copy' is used to avoid re-encoding
     ffmpeg.input(concat_file, format='concat', safe=0).output(output_file, c='copy').run()
     os.remove(concat_file)
     os.remove(black_video)
